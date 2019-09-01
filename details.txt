@@ -1,0 +1,18 @@
+<nav>
+<collapsible-list data-label="fruits">
+<collapsible-list data-label="mellons">
+<ul></ul>
+
+</collapsible-list><collapsible-list data-label="citrus">
+<ul></ul>
+</collapsible-list>
+
+</collapsible-list><collapsible-list data-label="vegetables">
+<collapsible-list data-label="root vegetables">
+<ul></ul>
+</collapsible-list><collapsible-list data-label="greens">
+<ul></ul>
+</collapsible-list>
+
+</collapsible-list>
+</nav>
