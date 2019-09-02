@@ -20,7 +20,7 @@ See details.txt for a sample of the results of this transformation.
 Obviously, it is possible (and fairly easy) to create this by hand, and this removes any need for javascript at all.
 The advantage of using this webcomponent is the slight simplification of the markup, and the ease of producing tree behavior.
 
-[Click this link to see this running in your browser](https://RichCaloggero.github.io/navigation.git).
+[Click this link to see this running in your browser](https://RichCaloggero.github.io/navigation/details-webcomponents.html).
 
 ```
 <nav>
