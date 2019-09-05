@@ -83,7 +83,7 @@ const details = document.createElement("details");
 details.innerHTML =
 (this.tree || noHeading)? `<summary>${labelText}</summary>`
 : `<summary><span role="heading" aria-level=${this.level.toString()}>${labelText}</span></summary>`;
-if (this.tree) details.querySelector("summary").setAttribute("tabindex", "-1");
+if (this.tree && !this.root) details.querySelector("summary").setAttribute("tabindex", "-1");
 details.setAttribute("role", "presentation");
 details.appendChild(list);
 container = details;
@@ -221,22 +221,6 @@ return element.matches("a, button, [tabindex]");
 } // isFocusable
 
 } // end local scope
-
-/*function getFocus(element) {
-console.log(`getFocus: ${element}`);
-const container = element.closest("[role=treeitem]");
-if (isLeafNode(element)) return element;
-else if (container.contains(element) && !isLeafNode(element)) return element;
-else {
-alert ("invalid focus");
-return null;
-} // if
-} // getFocus
-
-function setFocus (element) {
-element.focus();
-} // setFocus
-*/
 
 
 
