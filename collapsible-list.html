@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>web component</title>
+<title>Collapsible List Demo</title>
 <style>
 nav ul {list-style-type: none;}
 </style>
@@ -67,18 +67,22 @@ nav ul {list-style-type: none;}
 </collapsible-list></nav>
 
 
-<script src="details.js"></script>
+<script src="collapsible-list.js"></script>
 
 <script>
 document.querySelector("nav").addEventListener("click", e => {
-if (e.target.tagName.toLowerCase() === "a") {
+if (e.target.matches("a")) {
 alert (`clicked ${e.target.tagName.toLowerCase()} with href ${e.target.getAttribute("href")}.`);
 e.preventDefault();
+return false;
 
-} else if (e.target.tagName.toLowerCase() === "button") {
+} else if (e.target.matches("button")) {
 alert (`clicked ${e.target.tagName.toLowerCase()} with action ${e.target.getAttribute("data-action")}.`);
 e.preventDefault();
+return false;
 } // if
+
+return true;
 });
 
 </script>

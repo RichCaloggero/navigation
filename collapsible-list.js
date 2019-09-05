@@ -30,7 +30,7 @@ list.setAttribute("role", "group");
 } // if
 
 if (!this.level) {
-console.log(`level is ${this.getAttribute("level")}`);
+//console.log(`level is ${this.getAttribute("level")}`);
 this.level = this.hasAttribute("level")? Number(this.getAttribute("level")) : initialLevel;
 } // if
 
@@ -39,7 +39,7 @@ if (!noHeading) child.level = this.level+1;
 child.tree = this.tree;
 
 if (child.matches("li")) {
-if (!this.tree) {
+//if (!this.tree) {
 if (child.hasAttribute("data-href")) {
 const hRef = child.getAttribute("data-href");
 child.innerHTML = `<a href="${hRef}">${child.textContent}</a>`;
@@ -50,7 +50,7 @@ const action = child.getAttribute("data-action");
 child.innerHTML = `<button data-action="${action}">${child.textContent}</button>`;
 child.removeAttribute("data-action");
 } // if
-} // if
+//} // if
 
 } else {
 const parent = child.parentElement;
