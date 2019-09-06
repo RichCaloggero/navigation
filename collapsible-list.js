@@ -44,11 +44,13 @@ if (child.hasAttribute("data-href")) {
 const hRef = child.getAttribute("data-href");
 child.innerHTML = `<a href="${hRef}">${child.textContent}</a>`;
 child.removeAttribute("data-href");
+console.log("fixed child: ", child);
 
 } else if (child.hasAttribute("data-action")) {
 const action = child.getAttribute("data-action");
 child.innerHTML = `<button data-action="${action}">${child.textContent}</button>`;
 child.removeAttribute("data-action");
+console.log("fixed child: ", child);
 } // if
 //} // if
 
@@ -70,7 +72,10 @@ child.firstElementChild.setAttribute("tabindex", "-1");
 child.setAttribute("role", "treeitem");
 if (child.querySelector("ul, collapsible-list")) child.setAttribute("aria-expanded", "false");
 
-if (this.root && list.children.length === 0) child.setAttribute("id", id_treeActiveItem);
+if (this.root && list.children.length === 0) {
+child.setAttribute("id", id_treeActiveItem);
+child.setAttribute("aria-selected", "true");
+} // if
 } // if tree
 
 list.appendChild(child);
@@ -132,21 +137,33 @@ return element.closest("[role=treeitem]");
 } // getFocus
 
 function setFocus (element) {
-/*if (isLeafNode(element)) {
+if (!element) return null;
+updateAriaSelected(element);
+
+if (isLeafNode(element)) {
 element = element.firstElementChild;
 } // if
-*/
 
 if (element) {
-document.getElementById(id_treeActiveItem).removeAttribute("id");
-element.setAttribute("id", id_treeActiveItem);
-root.removeAttribute("aria-activedescendant");
-root.setAttribute("aria-activedescendant", id_treeActiveItem);
+updateId(element);
 console.log(`setFocus: `, element);
 return element;
 } // if
 
 console.log(`setFocus: element is null`);
+
+
+function updateId (element) {
+root.querySelector(`#${id_treeActiveItem}`).removeAttribute("id");
+element.setAttribute("id", id_treeActiveItem);
+root.removeAttribute("aria-activedescendant");
+root.setAttribute("aria-activedescendant", id_treeActiveItem);
+} // updateId
+
+function updateAriaSelected (element) {
+root.querySelector("[aria-selected]").removeAttribute("aria-selected");
+element.setAttribute("aria-selected", "true");
+} // updateAriaSelected
 } // setFocus
 
 function next (element) {

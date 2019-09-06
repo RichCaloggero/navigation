@@ -70,20 +70,16 @@ nav ul {list-style-type: none;}
 <script src="collapsible-list.js"></script>
 
 <script>
-document.querySelector("nav").addEventListener("click", e => {
-if (e.target.matches("a")) {
-alert (`clicked ${e.target.tagName.toLowerCase()} with href ${e.target.getAttribute("href")}.`);
+Array.from(document.querySelectorAll("nav"))
+.forEach(nav => nav.addEventListener("click", e => {
+const element = e.target;
+if (element.matches("summary, summary *")) return;
+const value = element.getAttribute("href") || element.getAttribute("data-action") || null;
+alert (`clicked ${element.tagName.toLowerCase()} -- ${value}.`);
 e.preventDefault();
-return false;
 
-} else if (e.target.matches("button")) {
-alert (`clicked ${e.target.tagName.toLowerCase()} with action ${e.target.getAttribute("data-action")}.`);
-e.preventDefault();
-return false;
-} // if
 
-return true;
-});
+}));
 
 </script>
 
