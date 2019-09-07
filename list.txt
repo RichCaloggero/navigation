@@ -1,0 +1,39 @@
+<nav>
+<details role="presentation"><summary>expand navigation</summary>
+<ul>
+<li>
+<details role="presentation"><summary><span role="heading" aria-level="2">fruits</span></summary>
+<ul>
+<li>
+<details role="presentation"><summary><span role="heading" aria-level="3">mellons</span></summary>
+<ul>
+<li><a href="water mellons are juicy">watermellon</a></li>
+<li><a href="honey due mellons are kind of gross">honey due mellon</a></li>
+</ul></details></li>
+<li>
+<details role="presentation"><summary><span role="heading" aria-level="3">citrus</span></summary>
+<ul>
+<li>orange</li>
+<li>grapefruit</li>
+</ul></details></li>
+<li><a href="apples are cool">apple</a></li>
+<li><a href="grapes are sweet">grape</a></li>
+</ul></details></li>
+<li>
+<details role="presentation"><summary><span role="heading" aria-level="2">vegetables</span></summary>
+<ul>
+<li>
+<details role="presentation"><summary><span role="heading" aria-level="3">root vegetables</span></summary>
+<ul>
+<li><button data-action="crunchy and good with hummus">carot</button></li>
+<li><button data-action="great with bacon">potato</button></li>
+</ul></details></li>
+<li>
+<details role="presentation"><summary><span role="heading" aria-level="3">greens</span></summary>
+<ul>
+<li>lettuce</li>
+<li>spinach</li>
+</ul></details></li>
+<li><button data-action="broccoli is crunchy">broccoli</button></li>
+</ul></details></li>
+</ul></details></nav>

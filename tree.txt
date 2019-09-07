@@ -1,0 +1,39 @@
+<nav>
+<details role="presentation"><summary>Fruits and Vegetables</summary>
+<ul role="tree">
+<li class="branch" aria-expanded="false" role="treeitem" tabindex="0">
+<details role="presentation"><summary tabindex="-1">fruits</summary>
+<ul role="group">
+<li class="branch" aria-expanded="false" role="treeitem">
+<details role="presentation"><summary tabindex="-1">mellons</summary>
+<ul role="group">
+<li class="branch" role="none"><a href="water mellons are juicy" tabindex="-1" role="treeitem">watermellon</a></li>
+<li class="branch" role="none"><a href="honey due mellons are kind of gross" tabindex="-1" role="treeitem">honey due mellon</a></li>
+</ul></details></li>
+<li class="branch" aria-expanded="false" role="treeitem">
+<details role="presentation"><summary tabindex="-1">citrus</summary>
+<ul role="group">
+<li class="branch" role="none"><span tabindex="-1" role="treeitem">orange</span></li>
+<li class="branch" role="none"><span tabindex="-1" role="treeitem">grapefruit</span></li>
+</ul></details></li>
+<li class="branch" role="none"><a href="apples are cool" tabindex="-1" role="treeitem">apple</a></li>
+<li class="branch" role="none"><a href="grapes are sweet" tabindex="-1" role="treeitem">grape</a></li>
+</ul></details></li>
+<li class="branch" aria-expanded="false" role="treeitem">
+<details role="presentation"><summary tabindex="-1">vegetables</summary>
+<ul role="group">
+<li class="branch" aria-expanded="false" role="treeitem">
+<details role="presentation"><summary tabindex="-1">root vegetables</summary>
+<ul role="group">
+<li class="branch" role="none"><button data-action="crunchy and good with hummus" tabindex="-1" role="treeitem">carot</button></li>
+<li class="branch" role="none"><button data-action="great with bacon" tabindex="-1" role="treeitem">potato</button></li>
+</ul></details></li>
+<li class="branch" aria-expanded="false" role="treeitem">
+<details role="presentation"><summary tabindex="-1">greens</summary>
+<ul role="group">
+<li class="branch" role="none"><span tabindex="-1" role="treeitem">lettuce</span></li>
+<li class="branch" role="none"><span tabindex="-1" role="treeitem">spinach</span></li>
+</ul></details></li>
+<li class="branch" role="none"><button data-action="broccoli is crunchy" tabindex="-1" role="treeitem">broccoli</button></li>
+</ul></details></li>
+</ul></details></nav>

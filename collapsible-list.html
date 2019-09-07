@@ -15,57 +15,66 @@ nav ul {list-style-type: none;}
 <collapsible-list tree label="Fruits and Vegetables">
 <collapsible-list label="fruits">
 <collapsible-list label="mellons">
+<!-- these create links; the href's are obviously not valid URLs, but will be displayed when click event handled -->
 <li data-href="water mellons are juicy">watermellon</li>
 <li data-href="honey due mellons are kind of gross">honey due mellon</li>
 
 </collapsible-list><collapsible-list label="citrus">
+<!-- these generate spans -->
 <li>orange</li>
 <li>grapefruit</li>
 </collapsible-list>
+<!-- these links gets wrapped in a "li" -->
 <a href="apples are cool">apple</a>
-<li data-href="grapes are sweet">grape</li>
+<a href="grapes are sweet">grape</a>
 
 </collapsible-list><collapsible-list label="vegetables">
 <collapsible-list label="root vegetables">
+<!-- these generate buttons -->
 <li data-action="crunchy and good with hummus">carot</li>
 <li data-action="great with bacon">potato</li>
 </collapsible-list><collapsible-list label="greens">
+<!-- these generate spans -->
 <li>lettuce</li>
 <li>spinach</li>
 </collapsible-list>
-<li>broccoli</li>
+<button data-action="broccoli is crunchy">broccoli</button>
 </collapsible-list>
 </collapsible-list></nav>
 
 <hr>
-<h2>As simple collapsible nested lists</h2>
+<h2>Same as above, but acts like collapsible lists rather than a tree</h2>
 
 <nav>
-<collapsible-list label="toggle navigation" no-heading>
+<collapsible-list no-heading label="expand navigation">
 <collapsible-list label="fruits">
 <collapsible-list label="mellons">
+<!-- these create links; the href's are obviously not valid URLs, but will be displayed when click event handled -->
 <li data-href="water mellons are juicy">watermellon</li>
 <li data-href="honey due mellons are kind of gross">honey due mellon</li>
 
 </collapsible-list><collapsible-list label="citrus">
+<!-- these generate spans -->
 <li>orange</li>
 <li>grapefruit</li>
 </collapsible-list>
+<!-- these links gets wrapped in a "li" -->
 <a href="apples are cool">apple</a>
-<li data-href="grapes are sweet">grape</li>
+<a href="grapes are sweet">grape</a>
 
 </collapsible-list><collapsible-list label="vegetables">
 <collapsible-list label="root vegetables">
+<!-- these generate buttons -->
 <li data-action="crunchy and good with hummus">carot</li>
 <li data-action="great with bacon">potato</li>
 </collapsible-list><collapsible-list label="greens">
+<!-- these generate spans -->
 <li>lettuce</li>
 <li>spinach</li>
 </collapsible-list>
-<li>broccoli</li>
+<button data-action="broccoli is crunchy">broccoli</button>
 </collapsible-list>
 </collapsible-list></nav>
-
 
 <script src="collapsible-list.js"></script>
 
