@@ -1,60 +1,60 @@
 { // local scope
-const initialLevel = 2;
-const id_treeActiveItem = "id_tree-active-item";
+const initialHeadingLevel = 2;
 
 class CollapsibleList extends HTMLElement {
-/*static get observedAttributes() {
-return ["data-label"];
-} // get observedAttributes
-*/
 
 constructor () {
 super ();
 } // constructor
 
 connectedCallback () {
-//console.debug (`list connected:\n${this.innerHTML}`);
+/* Here is where all the action happens...
+This gets called each time a "collapsible-list" element is connected to the document.
+It replaces "collapsible-list" elements with "ul" and wraps those with labels in details elements whose summary textContent reflects the value of the label attribute.
+*/
 const list = document.createElement("ul");
 const parent = this.parentElement;
 const noHeading = this.hasAttribute("no-heading");
 
+// initialize tree mode by adding aria treeview markup on the fly
 if (this.hasAttribute("tree")) {
-//list.setAttribute("aria-activedescendant", id_treeActiveItem);
-//list.setAttribute("tabindex", "0");
+// this is the root
 list.setAttribute("role", "tree");
 this.tree = true;
 this.root = true;
 bindTreeNavigationKeys(list);
 } else if (this.tree === true) {
+// this is a subtree (nested collapsible-list element)
 list.setAttribute("role", "group");
 } // if
 
-if (!this.level) {
-//console.log(`level is ${this.getAttribute("level")}`);
-this.level = this.hasAttribute("level")? Number(this.getAttribute("level")) : initialLevel;
+// initialize heading level (used for non-tree mode)
+if (!this.headingLevel) {
+this.headingLevel = this.hasAttribute("level")? Number(this.getAttribute("level")) : initialHeadingLevel;
 } // if
 
+// process the direct children of this node
 Array.from(this.children).forEach(child => {
-if (!noHeading) child.level = this.level+1;
+if (!noHeading) child.headingLevel = this.headingLevel+1;
 child.tree = this.tree;
 
 if (child.matches("li")) {
-//if (!this.tree) {
+// if we're given "li" elements, add links or button element children depending on attributes
 if (child.hasAttribute("data-href")) {
 const hRef = child.getAttribute("data-href");
 child.innerHTML = `<a href="${hRef}">${child.textContent}</a>`;
 child.removeAttribute("data-href");
-console.log("fixed child: ", child);
+//console.log("fixed child: ", child);
 
 } else if (child.hasAttribute("data-action")) {
 const action = child.getAttribute("data-action");
 child.innerHTML = `<button data-action="${action}">${child.textContent}</button>`;
 child.removeAttribute("data-action");
-console.log("fixed child: ", child);
+//console.log("fixed child: ", child);
 } // if
-//} // if
 
 } else {
+// no "li" so wrap child in "li"
 const parent = child.parentElement;
 
 const listItem = document.createElement("li");
@@ -66,6 +66,7 @@ if (this.tree) {
 child.classList.add("branch");
 
 if (containsOnlyTextNodes(child)) {
+// be sure firstElementChild of this "li" is a container
 child.innerHTML = `<span tabindex="-1">${child.textContent}</span>`;
 } else if (isFocusable(child.firstElementChild)) {
 child.firstElementChild.setAttribute("tabindex", "-1");
@@ -76,6 +77,7 @@ if (child.querySelector("ul, collapsible-list")) {
 child.setAttribute("aria-expanded", "false");
 child.setAttribute("role", "treeitem");
 } else {
+// otherwise, treeitem role goes on firstElementChild and this child gets role of none or presentation
 child.firstElementChild.setAttribute("role", "treeitem");
 child.setAttribute("role", "none");
 } // if
@@ -87,32 +89,38 @@ child.focus();
 } // if
 } // if tree
 
+// finally, add this child node to the current list
 list.appendChild(child);
 }); // forEach children
 
 let container = list;
-if (this.hasAttribute("data-label")) {
-const labelText = this.getAttribute("data-label");
+if (this.hasAttribute("label")) {
+// if this collapsible-list has a label, make it collapsible by wrapping it's list in details whose summary contains the label's text
+const labelText = this.getAttribute("label");
 const details = document.createElement("details");
+
+// add heading to summary only if not a tree and this collapsible-list node doesn't have no-heading attribute
 details.innerHTML =
 (this.tree || noHeading)? `<summary>${labelText}</summary>`
-: `<summary><span role="heading" aria-level=${this.level.toString()}>${labelText}</span></summary>`;
+: `<summary><span role="heading" aria-level=${this.headingLevel.toString()}>${labelText}</span></summary>`;
+
+// be sure summary isn't focusable when in tree mode
 if (this.tree && !this.root) details.querySelector("summary").setAttribute("tabindex", "-1");
+
+// needs to be presentational so screen reader will properly count list items and report start / end of current level, etc
 details.setAttribute("role", "presentation");
+
+// wrap
 details.appendChild(list);
 container = details;
 } // if
 
+// replace this collapsible-list element with the list we've created and let the process continue as new nested collapsible-list elements are found and added by the browser
 parent.replaceChild(container, this);
 } // connectedCallback 
-
-attributeChanged (name, value) {
-console.log(`attributeChanged ${name}`);
-} //attributeChanged 
-
-
 } // class CollapsibleList
 
+// define the custom element
 customElements.define ("collapsible-list", CollapsibleList);
 
 function bindTreeNavigationKeys (root) {
