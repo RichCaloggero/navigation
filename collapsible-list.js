@@ -108,7 +108,7 @@ details.innerHTML =
 if (this.tree && !this.root) details.querySelector("summary").setAttribute("tabindex", "-1");
 
 // needs to be presentational so screen reader will properly count list items and report start / end of current level, etc
-details.setAttribute("role", "presentation");
+//details.setAttribute("role", "presentation");
 
 // wrap
 details.appendChild(list);
