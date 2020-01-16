@@ -107,8 +107,8 @@ details.innerHTML =
 // be sure summary isn't focusable when in tree mode
 if (this.tree && !this.root) details.querySelector("summary").setAttribute("tabindex", "-1");
 
-// needs to be presentational so screen reader will properly count list items and report start / end of current level, etc
-//details.setAttribute("role", "presentation");
+// needs to be presentational if in tree mode so screen reader will properly count list items and report start / end of current level, etc
+if (this.tree) details.setAttribute("role", "presentation");
 
 // wrap
 details.appendChild(list);
